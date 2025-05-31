@@ -87,4 +87,28 @@ return [
         'max_item' => 'Only :count values can be added',
         'remove_item' => 'Remove item',
     ],
+    'product_group_title' => 'Catalog',
+    'products' => [
+        'products_title' => 'Products',
+    ],
+    'descriptions' => [
+        'descriptions_title' => 'Descriptions',
+    ],
+    'prices' => [
+        'prices_title' => 'Prices',
+    ],
+    'properties' => [
+        'properties_title' => 'Properties',
+    ],
+    'images' => [
+        'images_title' => 'Images',
+    ],
+    'types' => [
+        'types_title' => 'Data types',
+        'name' => 'Data type',
+        'slug' => 'Name table',
+    ],
+    'categories' => [
+        'categories_title' => 'Categories',
+    ]
 ];

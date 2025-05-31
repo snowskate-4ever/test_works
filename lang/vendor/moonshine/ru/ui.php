@@ -86,5 +86,29 @@ return [
         'add_item' => 'Нажмите Enter для добавления «:value»',
         'max_item' => 'Максимальное количество элементов: :count',
         'remove_item' => 'Удалить элемент',
+    ],
+    'product_group_title' => 'Каталог',
+    'products' => [
+        'products_title' => 'Товары',
+    ],
+    'descriptions' => [
+        'descriptions_title' => 'Описания',
+    ],
+    'prices' => [
+        'prices_title' => 'Цены',
+    ],
+    'properties' => [
+        'properties_title' => 'Свойства',
+    ],
+    'images' => [
+        'images_title' => 'Изображения',
+    ],
+    'types' => [
+        'types_title' => 'Типы данных',
+        'name' => 'Тип данных',
+        'slug' => 'Название таблицы',
+    ],
+    'categories' => [
+        'categories_title' => 'Категории',
     ]
 ];

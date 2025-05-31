@@ -30,6 +30,15 @@ use MoonShine\UI\Components\{Breadcrumbs,
     Layout\TopBar,
     Layout\Wrapper,
     When};
+use App\MoonShine\Resources\ProductResource;
+use MoonShine\MenuManager\MenuGroup;
+use MoonShine\MenuManager\MenuItem;
+use App\MoonShine\Resources\DescriptionResource;
+use App\MoonShine\Resources\PriceResource;
+use App\MoonShine\Resources\PropertyResource;
+use App\MoonShine\Resources\ImageResource;
+use App\MoonShine\Resources\TypeResource;
+use App\MoonShine\Resources\CategoryResource;
 
 final class MoonShineLayout extends AppLayout
 {
@@ -43,6 +52,15 @@ final class MoonShineLayout extends AppLayout
     protected function menu(): array
     {
         return [
+            MenuGroup::make(static fn () => __('moonshine::ui.product_group_title'), [
+                MenuItem::make(__('moonshine::ui.products.products_title'), ProductResource::class),
+                MenuItem::make(__('moonshine::ui.descriptions.descriptions_title'), DescriptionResource::class),
+                MenuItem::make(__('moonshine::ui.prices.prices_title'), PriceResource::class),
+                MenuItem::make(__('moonshine::ui.properties.properties_title'), PropertyResource::class),
+                MenuItem::make(__('moonshine::ui.images.images_title'), ImageResource::class),
+                MenuItem::make(__('moonshine::ui.categories.categories_title'), CategoryResource::class),
+            ]),
+            MenuItem::make(__('moonshine::ui.types.types_title'), TypeResource::class),
             ...parent::menu(),
         ];
     }
