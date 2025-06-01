@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('slug');
             $table->integer('value');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

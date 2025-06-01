@@ -110,5 +110,7 @@ return [
     ],
     'categories' => [
         'categories_title' => 'Categories',
+        'name' => 'Name',
+        'slug' => 'Id parent',
     ]
 ];

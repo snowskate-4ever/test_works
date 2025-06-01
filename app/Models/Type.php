@@ -19,6 +19,13 @@ class Type extends Model
      */
     protected $fillable = [
         'name',
-        'slug',
+        'parent_id',
+    ];
+    protected $guarded = false;
+
+    protected $hidden = [
+        'created_at',
+        'updated_at',
+        'deleted_at',
     ];
 }
