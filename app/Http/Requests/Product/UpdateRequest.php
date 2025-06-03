@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Category;
+namespace App\Http\Requests\Product;
 
 use Illuminate\Foundation\Http\FormRequest;
 
@@ -23,7 +23,8 @@ class UpdateRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
-            'parent_id' => 'required|integer',
+            'category_id' => 'required|integer',
+            'is_active' => 'required|boolean',
         ];
     }
 }

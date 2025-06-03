@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Property\StoreRequest;
+use App\Http\Requests\Property\UpdateRequest;
+use App\Http\Resources\PropertyResource;
 use App\Models\Property;
 use Illuminate\Http\Request;
 
@@ -12,7 +15,8 @@ class PropertyController extends Controller
      */
     public function index()
     {
-        //
+        $properties = Property::all();
+        return PropertyResource::collection($properties);
     }
 
     /**
@@ -26,9 +30,11 @@ class PropertyController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-        //
+        $data = $request->validated();
+        $property = Property::create($data);
+        return PropertyResource::make($property);
     }
 
     /**
@@ -36,7 +42,7 @@ class PropertyController extends Controller
      */
     public function show(Property $property)
     {
-        //
+        return PropertyResource::make($property);
     }
 
     /**
@@ -50,9 +56,12 @@ class PropertyController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Property $property)
+    public function update(UpdateRequest $request, Property $property)
     {
-        //
+        $data = $request->validated();
+        $property->update($data);
+        $property = $property->fresh();
+        return PropertyResource::make($property);
     }
 
     /**
@@ -60,6 +69,7 @@ class PropertyController extends Controller
      */
     public function destroy(Property $property)
     {
-        //
+        $property->delete();
+        return response()->json(['message' => 'done', 'status' => 200]);
     }
 }

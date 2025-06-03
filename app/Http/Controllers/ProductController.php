@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Product\StoreRequest;
+use App\Http\Requests\Product\UpdateRequest;
+use App\Http\Resources\ProductResource;
 use App\Models\Product;
+use App\Models\Property;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -12,7 +16,14 @@ class ProductController extends Controller
      */
     public function index()
     {
-        //
+        $products = Product::all();
+        $product_ids = [];
+//        foreach ($products as $key => $product) {
+//            $product_ids[] = $key;
+//        }
+//        $properties = Property::filter(['product_id' => $product_ids])->get();
+        dd($products);
+        return ProductResource::collection($products);
     }
 
     /**
@@ -26,9 +37,11 @@ class ProductController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreRequest $request)
     {
-        //
+        $data = $request->validated();
+        $product = Product::create($data);
+        return ProductResource::make($product);
     }
 
     /**
@@ -36,7 +49,8 @@ class ProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        //dd($product);
+        return ProductResource::make($product);
     }
 
     /**
@@ -50,9 +64,12 @@ class ProductController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Product $product)
+    public function update(UpdateRequest $request, Product $product)
     {
-        //
+        $data = $request->validated();
+        $product->update($data);
+        //$type = $type->fresh();
+        return ProductResource::make($product);
     }
 
     /**
@@ -60,6 +77,7 @@ class ProductController extends Controller
      */
     public function destroy(Product $product)
     {
-        //
+        $product->delete();
+        return response()->json(['message' => 'done', 'status' => 200]);
     }
 }

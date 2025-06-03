@@ -90,6 +90,9 @@ return [
     'product_group_title' => 'Каталог',
     'products' => [
         'products_title' => 'Товары',
+        'name' => 'Название товара',
+        'category_id' => 'Категория',
+        'is_active' => 'Активность',
     ],
     'descriptions' => [
         'descriptions_title' => 'Описания',
@@ -99,18 +102,21 @@ return [
     ],
     'properties' => [
         'properties_title' => 'Свойства',
+        'unit' => 'Единицы измерения',
+        'slug' => 'Название таблицы',
+        'value' => 'Значение свойства',
     ],
     'images' => [
         'images_title' => 'Изображения',
     ],
     'types' => [
         'types_title' => 'Типы данных',
-        'name' => 'Тип данных',
+        'name' => 'Наименование типа данных',
         'slug' => 'Название таблицы',
     ],
     'categories' => [
         'categories_title' => 'Категории',
-        'name' => 'Название',
-        'slug' => 'Id родителя',
+        'name' => 'Название категории',
+        'parent_id' => 'Id родителя',
     ]
 ];

@@ -23,30 +23,21 @@ use MoonShine\UI\Fields\Text;
 class CategoryResource extends ModelResource
 {
     protected string $model = Category::class;
-
     protected string $title = 'Categories';
-
     protected string $column = 'name';
     protected bool $createInModal = true;
-
     protected bool $detailInModal = true;
-
     protected bool $editInModal = true;
-
     protected bool $cursorPaginate = true;
-
     //protected string $title = __('moonshine::ui.types.types_title');
     public function getTitle(): string
-
     {
-        return __('moonshine::ui.types.categories_title');
+        return __('moonshine::ui.categories.categories_title');
     }
-
     protected function activeActions(): ListOf
     {
         return parent::activeActions()->except(Action::VIEW);
     }
-
     /**
      * @return list<FieldContract>
      */
@@ -58,7 +49,6 @@ class CategoryResource extends ModelResource
             Text::make(__('moonshine::ui.categories.parent_id'), 'parent_id')->sortable(),
         ];
     }
-
     /**
      * @return list<ComponentContract|FieldContract>
      */
@@ -67,7 +57,7 @@ class CategoryResource extends ModelResource
         return [
             Box::make([
                 Flex::make([
-                    Text::make(__('moonshine::categories.name'), 'name')
+                    Text::make(__('moonshine::ui.categories.name'), 'name')
                         ->required(),
 
                     Text::make(__('moonshine::ui.categories.parent_id'), 'parent_id')
@@ -76,7 +66,6 @@ class CategoryResource extends ModelResource
             ]),
         ];
     }
-
     /**
      * @return list<FieldContract>
      */
@@ -86,7 +75,6 @@ class CategoryResource extends ModelResource
             ID::make(),
         ];
     }
-
     /**
      * @param Category $item
      *

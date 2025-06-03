@@ -90,6 +90,9 @@ return [
     'product_group_title' => 'Catalog',
     'products' => [
         'products_title' => 'Products',
+        'name' => 'Product name',
+        'category_id' => 'Category name',
+        'is_active' => 'Active',
     ],
     'descriptions' => [
         'descriptions_title' => 'Descriptions',
@@ -99,18 +102,21 @@ return [
     ],
     'properties' => [
         'properties_title' => 'Properties',
+        'unit' => 'Unit',
+        'slug' => 'Property name',
+        'value' => 'Property value',
     ],
     'images' => [
         'images_title' => 'Images',
     ],
     'types' => [
         'types_title' => 'Data types',
-        'name' => 'Data type',
+        'name' => 'Data type name',
         'slug' => 'Name table',
     ],
     'categories' => [
         'categories_title' => 'Categories',
-        'name' => 'Name',
-        'slug' => 'Id parent',
+        'name' => 'Name category',
+        'parent_id' => 'Id parent',
     ]
 ];
