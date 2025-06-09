@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Notifications\Notifiable;
 
 class Product extends Model
@@ -13,7 +14,9 @@ class Product extends Model
     protected $fillable = [
         'name',
         'category_id',
-        'is_active'
+        'is_active',
+        'property',
+        'properties'
     ];
     protected $guarded = false;
 
@@ -27,8 +30,8 @@ class Product extends Model
     {
         return $this->belongsTo(Category::class);
     }
-    public function get_properties()
+    public function property(): HasMany
     {
-        $this->props = 'fffewfewfe';
+        return $this->hasMany(Property::class);//->where('slug', 'product');
     }
 }

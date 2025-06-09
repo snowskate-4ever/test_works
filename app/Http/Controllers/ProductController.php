@@ -14,15 +14,39 @@ class ProductController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::all();
-        $product_ids = [];
+        if (isset($request->query()['properties'])) {
+            $products = Product::with([
+                'property',
+                'property.type'
+            ])//?properties[Вес][]=5&properties[Вес][]=2&properties[Ширина][]=20
+            ->whereHas('property.type', function($query) use ($request) {
+                $k = 0;
+                foreach ($request->query()['properties'] as $property => $value) {
+                    if($k == 0) {
+                        $query->where(['name' => $property])
+                            ->whereIn('value', $value);
+                        $k++;
+                    } else {
+                        $query->orWhere(['name' => $property])
+                            ->whereIn('value', $value);
+                    }
+                }
+            })->get();
+        } else {
+            $products = Product::with([
+                'property',
+                'property.type'
+            ])->get();
+        };
 //        foreach ($products as $key => $product) {
-//            $product_ids[] = $key;
+//            echo '<pre>'.print_r($product->name, true) . "</pre>";
+//            foreach ($product->property as $property) {
+//                echo '<pre>    '.$property->id .' '. $property->type->name.' '.$property->value.'<br></pre>';
+//            }
 //        }
-//        $properties = Property::filter(['product_id' => $product_ids])->get();
-        dd($products);
+
         return ProductResource::collection($products);
     }
 
